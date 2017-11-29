@@ -1,0 +1,42 @@
+/*
+ *
+ * Licensed Materials - Property of IBM
+ *
+ * Copyright IBM Corp. 2017, 2017 All Rights Reserved
+ *
+ * US Government Users Restricted Rights - Use, duplication or
+ * disclosure restricted by GSA ADP Schedule Contract with
+ * IBM Corp.
+ */
+
+enclave {
+    from "sgx_tsgxssl.edl" import *;
+
+    trusted {
+        public sgx_status_t ecall_sgxssl_encrypt([user_check] uint8_t* in_buf,
+        						  uint32_t in_buf_len,
+        						  [user_check] uint8_t* out_buf,
+                                  uint32_t out_buf_len);
+        public sgx_status_t ecall_sgxssl_decrypt(
+        							[user_check] uint8_t* in_buf,
+	    						  	uint32_t in_buf_len,
+	    						  	[user_check] uint8_t* out_buf,
+	                              	uint32_t out_buf_len);
+        public sgx_status_t ecall_sgxsdk_encrypt([user_check] uint8_t* in_buf,
+        						  uint32_t in_buf_len,
+        						  [user_check] uint8_t* out_buf,
+                                  uint32_t out_buf_len);
+        public sgx_status_t ecall_sgxsdk_decrypt(
+        							[user_check] uint8_t* in_buf,
+        						  	uint32_t in_buf_len,
+        						  	[user_check] uint8_t* out_buf,
+                                  	uint32_t out_buf_len);                                             	
+
+    };
+    
+    
+    untrusted {
+        void ocall_print_string([in, string] const char *str);
+    };
+
+};
