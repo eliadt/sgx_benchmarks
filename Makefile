@@ -144,8 +144,8 @@ Enclave_Cpp_Flags := $(Enclave_C_Flags) -std=c++03 -nostdinc++
 # Otherwise, you may get some undesirable errors.
 Enclave_Link_Flags := $(SGX_COMMON_CFLAGS) -Wl,--no-undefined -nostdlib -nodefaultlibs -nostartfiles \
 	$(Security_Link_Flags) -L$(SGX_LIB_DIR) -L$(SGXSSL_LIB_DIR) \
-	-Wl,--whole-archive -l$(Trts_Library_Name) -Wl,--no-whole-archive \
-	-Wl,--start-group -lsgx_tstdc -lsgx_tstdcxx -lsgx_tkey_exchange -l$(SGX_CRYPTO_LIB_NAME) -l$(SGXSSL_LIB_NAME) -l$(SGXSSL_CRYPTO_LIB_NAME) -lsgx_tsetjmp -l$(Service_Library_Name) -Wl,--end-group \
+	-Wl,--whole-archive -l$(Trts_Library_Name) -l$(SGXSSL_LIB_NAME)  -Wl,--no-whole-archive \
+	-Wl,--start-group -lsgx_tstdc -lsgx_tstdcxx -lsgx_tkey_exchange -l$(SGX_CRYPTO_LIB_NAME) -l$(SGXSSL_CRYPTO_LIB_NAME) -l$(Service_Library_Name) -Wl,--end-group \
 	-Wl,-Bstatic -Wl,-Bsymbolic -Wl,--no-undefined \
 	-Wl,-pie,-eenclave_entry -Wl,--export-dynamic  \
 	-Wl,--defsym,__ImageBase=0 \

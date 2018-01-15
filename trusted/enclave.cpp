@@ -203,4 +203,9 @@ sgx_status_t ecall_sgxssl_decrypt(
     return SGX_SUCCESS;
 }
 
+void ecall_init_openssl() {
+    /* Initialize OpenSSL crypto */
+    OPENSSL_init_crypto(0, NULL);
+}
+
 
