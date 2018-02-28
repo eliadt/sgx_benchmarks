@@ -30,8 +30,8 @@ enclave {
         							[user_check] uint8_t* in_buf,
         						  	uint32_t in_buf_len,
         						  	[user_check] uint8_t* out_buf,
-                                  	uint32_t out_buf_len);                                             	
-
+					uint32_t out_buf_len);
+        public void ecall_init_openssl();
     };
     
     

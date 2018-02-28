@@ -372,6 +372,8 @@ int main(int argc, char* argv[])
 		return -1;
 	}
 
+	ecall_init_openssl(enclave_id);
+
 	retval = run_benchmark(enclave_id);
 	if (!retval) {
 		printf("Benchmark test has Failed\n");
